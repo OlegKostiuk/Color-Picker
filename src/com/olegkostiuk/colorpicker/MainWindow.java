@@ -62,6 +62,7 @@ public class MainWindow extends JFrame {
 		choosePanel.setBackground(DEFAULT_COLOR);
 		choosePanel.setBorder(BorderFactory
 				.createEtchedBorder(EtchedBorder.RAISED));
+        choosePanel.setToolTipText("Press here to select some color");
 
 		choosePanel.addMouseListener(new MouseAdapter() {
 
