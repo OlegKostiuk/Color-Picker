@@ -7,9 +7,7 @@ import java.awt.GridLayout;
 import java.awt.Robot;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 
 /**
@@ -53,7 +51,19 @@ public class MainWindow extends JFrame {
 
 	private void initialiseComponents() {
 
-		mainPanel = new JPanel();
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (InstantiationException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+
+        mainPanel = new JPanel();
 		mainPanel.setLayout(new GridLayout(4, 1, 10, 10));
 		mainPanel.setBorder(BorderFactory.createEmptyBorder(BORDER_SIZE, BORDER_SIZE, BORDER_SIZE, BORDER_SIZE));
 		setMinimumSize(new Dimension(MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT));
@@ -61,30 +71,30 @@ public class MainWindow extends JFrame {
 		choosePanel = new JPanel();
 		choosePanel.setBackground(DEFAULT_COLOR);
 		choosePanel.setBorder(BorderFactory
-				.createEtchedBorder(EtchedBorder.RAISED));
+                .createEtchedBorder(EtchedBorder.RAISED));
         choosePanel.setToolTipText("Press here to select some color");
 
 		choosePanel.addMouseListener(new MouseAdapter() {
 
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				super.mouseClicked(e);
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
 
-				MainWindow.this.setVisible(false);
+                MainWindow.this.setVisible(false);
 
-				// ///////////////// delay main window should have time to hide
-				try {
-					(new Robot()).delay(500);
-				} catch (AWTException e1) {
-					e1.printStackTrace();
-				}
-				// ///////////////
+                // ///////////////// delay main window should have time to hide
+                try {
+                    (new Robot()).delay(500);
+                } catch (AWTException e1) {
+                    e1.printStackTrace();
+                }
+                // ///////////////
 
-				colorSelector = new ColorSelectorUI(MainWindow.this);
-				colorSelector.setVisible(true);
-			}
+                colorSelector = new ColorSelectorUI(MainWindow.this);
+                colorSelector.setVisible(true);
+            }
 
-		});
+        });
 
 		mainPanel.add(choosePanel);
 
