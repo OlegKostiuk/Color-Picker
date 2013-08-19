@@ -25,7 +25,7 @@ public class MainWindow extends JFrame {
 	private JPanel mainPanel;
 	private ColorView panelRGB;
 	private ColorView panelHSV;
-	private ColorView panelCMYK;
+	private ColorView panelHEX;
 	private JPanel choosePanel;
 	ColorSelectorUI colorSelector;
 
@@ -44,7 +44,7 @@ public class MainWindow extends JFrame {
 	public void setSelectedColor(Color selectedColor) {
 		choosePanel.setBackground(selectedColor);
 		panelRGB.showColor(selectedColor);
-		panelCMYK.showColor(selectedColor);
+        panelHEX.showColor(selectedColor);
 		panelHSV.showColor(selectedColor);
 
 	}
@@ -98,7 +98,10 @@ public class MainWindow extends JFrame {
 
 		mainPanel.add(choosePanel);
 
-		panelRGB = new ColorViewRGB();
+        panelHEX = new HexView();
+        mainPanel.add(panelHEX);
+
+        panelRGB = new ColorViewRGB();
 		mainPanel.add(panelRGB);
 
 		panelHSV = new ColorViewHSV();
