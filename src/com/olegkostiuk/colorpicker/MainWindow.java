@@ -59,6 +59,10 @@ public class MainWindow extends JFrame {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
 
+        ImageIcon icon = new ImageIcon("src/com/olegkostiuk/colorpicker/resources/colorPicker.png");
+        setIconImage(icon.getImage());
+
+
         mainPanel = new JPanel();
 		mainPanel.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
