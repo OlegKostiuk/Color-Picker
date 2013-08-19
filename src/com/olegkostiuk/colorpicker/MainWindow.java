@@ -104,9 +104,6 @@ public class MainWindow extends JFrame {
 		panelHSV = new ColorViewHSV();
 		mainPanel.add(panelHSV);
 
-		panelCMYK = new ColorViewCMYK();
-		mainPanel.add(panelCMYK);
-
 	}
 
 	public static void main(String[] args) {
