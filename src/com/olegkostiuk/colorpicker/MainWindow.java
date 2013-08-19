@@ -1,10 +1,6 @@
 package com.olegkostiuk.colorpicker;
 
-import java.awt.AWTException;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.Robot;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.*;
@@ -19,8 +15,8 @@ import javax.swing.border.EtchedBorder;
 public class MainWindow extends JFrame {
 
 	private static final int BORDER_SIZE = 10;
-	private static final int MIN_WINDOW_HEIGHT = 300;
-	private static final int MIN_WINDOW_WIDTH = 170;
+	private static final int MIN_WINDOW_HEIGHT = 240;
+	private static final int MIN_WINDOW_WIDTH = 150;
 	private static final Color DEFAULT_COLOR = new Color(255, 255, 255);
 	private JPanel mainPanel;
 	private ColorView panelRGB;
@@ -64,8 +60,9 @@ public class MainWindow extends JFrame {
         }
 
         mainPanel = new JPanel();
-		mainPanel.setLayout(new GridLayout(4, 1, 10, 10));
-		mainPanel.setBorder(BorderFactory.createEmptyBorder(BORDER_SIZE, BORDER_SIZE, BORDER_SIZE, BORDER_SIZE));
+		mainPanel.setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(BORDER_SIZE, BORDER_SIZE, BORDER_SIZE, BORDER_SIZE));
 		setMinimumSize(new Dimension(MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT));
 
 		choosePanel = new JPanel();
@@ -96,16 +93,26 @@ public class MainWindow extends JFrame {
 
         });
 
-		mainPanel.add(choosePanel);
+		constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.fill = GridBagConstraints.BOTH;
+        constraints.weightx = 1.0;
+        constraints.weighty = 0.3;
+        mainPanel.add(choosePanel, constraints);
 
+        constraints.weighty = 0.0;
+        constraints.gridheight = 1;
+        constraints.gridy = 1;
         panelHEX = new HexView();
-        mainPanel.add(panelHEX);
+        mainPanel.add(panelHEX, constraints);
 
+        constraints.gridy = 2;
         panelRGB = new ColorViewRGB();
-		mainPanel.add(panelRGB);
+		mainPanel.add(panelRGB, constraints);
 
+        constraints.gridy = 3;
 		panelHSV = new ColorViewHSV();
-		mainPanel.add(panelHSV);
+		mainPanel.add(panelHSV, constraints);
 
 	}
 
