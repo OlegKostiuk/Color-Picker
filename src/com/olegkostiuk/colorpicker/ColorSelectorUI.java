@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Toolkit;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 /**
  * 
@@ -44,8 +44,10 @@ public class ColorSelectorUI extends JFrame {
 		setResizable(false);
 		setUndecorated(true);
 		setAlwaysOnTop(true);
-		
 		pack();
+
+        ImageIcon icon = new ImageIcon("src/com/olegkostiuk/colorpicker/resources/colorPicker.png");
+        setIconImage(icon.getImage());
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
