@@ -18,7 +18,8 @@ import javax.swing.border.EtchedBorder;
 
 public abstract class ColorView extends JPanel {
 
-	protected char[] fieldNames;
+    public static final int GAP_BEETWEAN_VALUES = 15;
+    protected char[] fieldNames;
 	protected JLabel[][] fields;
 	protected int fieldRowNumbers = 2;
 	protected int fieldColumnNumbers;
@@ -42,7 +43,8 @@ public abstract class ColorView extends JPanel {
 		updateColorView();
 
 		LayoutManager layout = new GridLayout(fieldRowNumbers,
-				fieldColumnNumbers, 15, 15);
+				fieldColumnNumbers, GAP_BEETWEAN_VALUES, GAP_BEETWEAN_VALUES);
+
 		setLayout(layout);
 
 		// setBorder
